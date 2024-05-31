@@ -8,7 +8,7 @@ function formatTelefone(telefone) {
 var alunos = [
     {
         id: 1,
-        name: "Eliabe",
+        name: "Eliabe Ramos",
         email: "eliabe859@gmail.com",
         telefone: 11951285687,
         curso: 1,
@@ -26,7 +26,7 @@ var alunos = [
     },
     {
         id: 3,
-        name: "isabelly Ramos",
+        name: "Isabelly Ramos",
         email: "iza.ramos@gmail.com",
         telefone: 11951285687,
         curso: 3,
@@ -87,13 +87,7 @@ function save(){
         curso: document.getElementById("selectCursos").value,
         turno: turnoDoAluno,
     };
-    /*console.log(aln.id);
-    console.log(aln.name);
-    console.log(aln.email);
-    console.log(aln.telefone);
-    console.log(aln.cursos);
-    console.log(aln.turno);
-*/
+    
     addNewRow(aln);
     alunos.push(aln);
 
