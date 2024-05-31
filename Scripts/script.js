@@ -114,29 +114,36 @@ function addNewRow(aln) {
     newRow.insertCell().appendChild(nameNode)
 
     var emailNode = document.createTextNode(aln.email)
-    newRow.insertCell().appendChild(emailNode)
+    var cell = newRow.insertCell()
+    cell.className='d-none d-sm-table-cell';
+    cell.appendChild(emailNode)
+   
 
     var telefoneFormatted = formatTelefone(aln.telefone);
     var telefoneNode = document.createTextNode(telefoneFormatted);
-    newRow.insertCell().appendChild(telefoneNode);
+    var cell = newRow.insertCell()
+    cell.className='d-none d-lg-table-cell';
+    cell.appendChild(telefoneNode)
     
     console.log(cursos[aln.curso - 1].name)
 
     var cursoNode = document.createTextNode(cursos[aln.curso - 1].name);
-    newRow.insertCell().appendChild(cursoNode)
+    var cell = newRow.insertCell()
+    cell.className='d-none d-sm-table-cell';
+    cell.appendChild(cursoNode)
 
     console.log(cursoNode)
 
     var turno = '';
 
     if (aln.turno == 1) {
-        turno = "<span class='badge text-bg-warning'>M</span>"
+        turno = "<span class='badge text-bg-warning d-none d-sm-table-cell'>M</span>"
 
     } else {
         if (aln.turno == 2) {
-            turno = "<span class='badge text-dark bg-orange'>T</span>"
+            turno = "<span class='badge text-dark bg-orange d-none d-sm-table-cell'>T</span>"
         } else {
-            turno = "<span class='badge text-bg-dark'>N</span>"
+            turno = "<span class='badge text-bg-dark d-none d-sm-table-cell'>N</span>"
         }
     }
 
