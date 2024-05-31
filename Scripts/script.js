@@ -53,7 +53,53 @@ function loadAlunos() {
     for (let aln of alunos) {
         addNewRow(aln);
     }
+}
+/*onsubmit="save(); return false;"*/
 
+
+function save(){
+
+    var turnoDoAluno = 0
+    var turnoManha = document.getElementById("gridRadios1").checked;
+    var turnoTarde = document.getElementById("gridRadios2").checked;
+  
+    if(turnoManha == true) {
+        turnoDoAluno = 1
+    }else{
+        if(turnoTarde == true) {
+            turnoDoAluno = 2
+        } else {
+            turnoDoAluno = 3
+        }
+    };
+    
+    curso = document.getElementById("selectCursos").value,
+
+    
+    console.log(curso);
+    console.log(turnoDoAluno);
+
+    var aln = {
+        id: alunos.length + 1,
+        name: document.getElementById("inputName").value,
+        email: document.getElementById("inputEmail").value,
+        telefone: document.getElementById("inputTelefone").value,
+        curso: document.getElementById("selectCursos").value,
+        turno: turnoDoAluno,
+    };
+    /*console.log(aln.id);
+    console.log(aln.name);
+    console.log(aln.email);
+    console.log(aln.telefone);
+    console.log(aln.cursos);
+    console.log(aln.turno);
+*/
+    addNewRow(aln);
+    alunos.push(aln);
+
+   
+    document.getElementById("formAluno").reset()
+    
 
 }
 
@@ -73,32 +119,33 @@ function addNewRow(aln) {
     var telefoneFormatted = formatTelefone(aln.telefone);
     var telefoneNode = document.createTextNode(telefoneFormatted);
     newRow.insertCell().appendChild(telefoneNode);
+    
+    console.log(cursos[aln.curso - 1].name)
 
-    var cursoNode = document.createTextNode(cursos[aln.curso - 1].name)
+    var cursoNode = document.createTextNode(cursos[aln.curso - 1].name);
     newRow.insertCell().appendChild(cursoNode)
 
+    console.log(cursoNode)
+
     var turno = '';
-    
-    if (aln.turno==1) {
+
+    if (aln.turno == 1) {
         turno = "<span class='badge text-bg-warning'>M</span>"
-        
+
     } else {
-        if (aln.turno==2) {
+        if (aln.turno == 2) {
             turno = "<span class='badge text-dark bg-orange'>T</span>"
         } else {
             turno = "<span class='badge text-bg-dark'>N</span>"
         }
     }
 
-    console.log(turno)
+    
+    
 
 
     var cell = newRow.insertCell();
     cell.innerHTML = turno;
 
-
-
-    
-
-
 }
+
